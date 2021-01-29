@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    tools:context=".EditActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.33242133"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_EdTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:hint="@string/Zag"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainImageLayout" />
+
+    <EditText
+        android:id="@+id/et_edDesk"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="@string/OP"
+        android:inputType="textMultiLine|textPersonName"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_EdTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_EdTitle"
+        app:layout_constraintTop_toBottomOf="@+id/et_EdTitle"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:onClick="onClickSave"
+        app:layout_constraintBottom_toBottomOf="@+id/et_edDesk"
+        app:layout_constraintEnd_toEndOf="@+id/et_edDesk"
+        app:srcCompat="@android:drawable/ic_menu_save" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_AddImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:onClick="onClickAddImage"
+        app:layout_constraintBottom_toTopOf="@+id/fb_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainImageLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:drawable/editbox_background"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="@+id/et_EdTitle"
+        app:layout_constraintStart_toStartOf="@+id/et_EdTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:visibility="gone">
+
+        <ImageView
+            android:id="@+id/im_MainImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageButton
+            android:id="@+id/im_Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="onClickDeleteImage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+        <ImageButton
+            android:id="@+id/im_EditImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="onClickChoseImage"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/im_MainImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

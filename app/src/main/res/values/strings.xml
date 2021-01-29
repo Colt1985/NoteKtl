@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Note</string>
+    <string name="Zag">Заголовок</string>
+    <string name="OP">Описание</string>
+</resources>
