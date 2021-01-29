@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.note.db.MyDbManager
 
+//Note
 class MainActivity : AppCompatActivity() {
 
     val myDbManager = MyDbManager(this)
