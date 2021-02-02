@@ -8,8 +8,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc_recyclerView"
-        style="@style/activity_RecyclerView">
-    </androidx.recyclerview.widget.RecyclerView>
+        style="@style/activity_RecyclerView"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        tools:layout_editor_absoluteX="0dp"></androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/tv_NoElements"
@@ -25,4 +27,12 @@
         android:onClick="onClickNew"
         app:srcCompat="@android:drawable/ic_menu_add"
         tools:ignore="MissingConstraints" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

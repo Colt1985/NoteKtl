@@ -3,6 +3,7 @@ package com.example.note
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
+        initSearchView()
     }
 
     override fun onDestroy() {
@@ -46,9 +48,23 @@ class MainActivity : AppCompatActivity() {
         rc_recyclerView.adapter = myAdapter
     }
 
+    private fun initSearchView(){
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val list = myDbManager.readDbData(newText!!)
+                myAdapter.updateAdapter(list)
+                return true
+            }
+        })
+    }
+
     fun fillAdapter() {
 
-        val list = myDbManager.readDbData()
+        val list = myDbManager.readDbData("")
         myAdapter.updateAdapter(list)
 
         if (list.size > 0) {

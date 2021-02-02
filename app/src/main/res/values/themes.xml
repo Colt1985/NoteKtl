@@ -25,7 +25,7 @@
 
     <style name="activity_RecyclerView">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">0dp</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
