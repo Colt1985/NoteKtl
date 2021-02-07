@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Заметки</string>
+    <string name="Title">Заголовок</string>
+    <string name="Description">Описание</string>
+    <string name="no_elements">Нет элементов</string>
+</resources>
