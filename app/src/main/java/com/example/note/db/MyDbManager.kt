@@ -23,12 +23,22 @@ class MyDbManager(context: Context) {
         db?.insert(MyDbNameClass.TABLE_NAME, null, values)
     }
 
+    fun updateItem(title: String, content: String, uri: String, id: Int) {
+        val selection = BaseColumns._ID + "=$id"
+        val values = ContentValues().apply {
+            put(MyDbNameClass.COLUMN_NAME_TITLE, title)
+            put(MyDbNameClass.COLUMN_NAME_CONTENT, content)
+            put(MyDbNameClass.COLUMN_NAME_IMAGE_URI, uri)
+        }
+        db?.update(MyDbNameClass.TABLE_NAME, values, selection, null)
+    }
+
     fun removeItemToDb(id: String) {
         val selection = BaseColumns._ID + "=$id"
         db?.delete(MyDbNameClass.TABLE_NAME, selection, null)
     }
 
-    fun readDbData(searchText:String): ArrayList<ListItem> {
+    fun readDbData(searchText: String): ArrayList<ListItem> {
         val dataList = ArrayList<ListItem>()
         val selection = "${MyDbNameClass.COLUMN_NAME_TITLE} like ?"
         val cursor = db?.query(

@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.edit_activity.*
 
 class EditActivity : AppCompatActivity() {
     val imageRequestCode = 10
+    var id = 0
+    var isEditState = false
     var tempImageUri = "empty"
     val myDbManager = MyDbManager(this)
 
@@ -62,19 +64,34 @@ class EditActivity : AppCompatActivity() {
         val myDesc = et_edDesk.text.toString()
 
         if (myTitle != "" && myDesc != "") {
-            myDbManager.insertToDb(myTitle, myDesc, tempImageUri)
+            if (isEditState){
+                myDbManager.updateItem(myTitle, myDesc, tempImageUri,id)
+            }else {
+                myDbManager.insertToDb(myTitle, myDesc, tempImageUri)
+            }
             finish()
         }
     }
+    fun onEditEnable(view: View){
+        et_EdTitle.isEnabled = true
+        et_edDesk.isEnabled = true
+        fb_Edite.visibility = View.GONE
+    }
 
     fun getMyIntents() {
+        fb_Edite.visibility = View.GONE
         val i = intent
 
         if (i != null) {
             if (i.getStringExtra(MyIntentConstants.I_TITLE_KEY) != null) {
                 fb_AddImage.visibility = View.GONE
                 et_EdTitle.setText(i.getStringExtra(MyIntentConstants.I_TITLE_KEY))
+                isEditState = true
+                et_EdTitle.isEnabled = false
+                et_edDesk.isEnabled = false
+                fb_Edite.visibility = View.VISIBLE
                 et_edDesk.setText(i.getStringExtra(MyIntentConstants.I_DESC_KEY))
+                id = i.getIntExtra(MyIntentConstants.I_ID_KEY,0)
                 if (i.getStringExtra(MyIntentConstants.I_URI_KEY) != "empty") {
 
                     mainImageLayout.visibility = View.VISIBLE
