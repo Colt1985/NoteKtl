@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils.isEmpty
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.note.db.MyDbManager
@@ -15,6 +16,7 @@ class EditActivity : AppCompatActivity() {
     var id = 0
     var isEditState = false
     var tempImageUri = "empty"
+    val DEFAULT_VALUE = 0
     val myDbManager = MyDbManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +65,7 @@ class EditActivity : AppCompatActivity() {
         val myTitle = et_EdTitle.text.toString()
         val myDesc = et_edDesk.text.toString()
 
-        if (myTitle != "" && myDesc != "") {
+        if (isEmpty(myTitle) &&  isEmpty(myDesc)) {
             if (isEditState){
                 myDbManager.updateItem(myTitle, myDesc, tempImageUri,id)
             }else {
@@ -91,7 +93,7 @@ class EditActivity : AppCompatActivity() {
                 et_edDesk.isEnabled = false
                 fb_Edite.visibility = View.VISIBLE
                 et_edDesk.setText(i.getStringExtra(MyIntentConstants.I_DESC_KEY))
-                id = i.getIntExtra(MyIntentConstants.I_ID_KEY,0)
+                id = i.getIntExtra(MyIntentConstants.I_ID_KEY,DEFAULT_VALUE)
                 if (i.getStringExtra(MyIntentConstants.I_URI_KEY) != "empty") {
 
                     mainImageLayout.visibility = View.VISIBLE
